@@ -24,7 +24,6 @@ namespace kolokwium2.Controllers
             if(await _service.GetMusicianById(idMusician).FirstOrDefaultAsync() is null){
                 return NotFound("Nie znalezono muzyka o podanym id");
             }
-            return Ok("Poprawnie usunieto muzyka");
 
             if(await _service.TrackExistInAlbum(idMusician)){
                 return BadRequest("Muzyk ma utwory w albumie");
