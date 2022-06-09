@@ -26,6 +26,15 @@ namespace kolokwium2.Controllers
             }
             return Ok("Poprawnie usunieto muzyka");
 
+            if(await _service.TrackExistInAlbum(idMusician)){
+                return BadRequest("Muzyk ma utwory w albumie");
+            }
+            else{
+                await _service.DeleteAsync(idMusician);
+                await _service.SaveChangesAsync();
+                return Ok("Poprawnie usunieto");
+            }
+
         }
     }
 }
